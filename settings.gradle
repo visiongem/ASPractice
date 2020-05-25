@@ -1,0 +1,3 @@
+rootProject.name='ASPractice'
+include ':app'
+include ':simplecalculator'
