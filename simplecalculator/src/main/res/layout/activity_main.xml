@@ -184,13 +184,13 @@
                     android:id="@+id/btn_dot"
                     style="@style/btn_cal"
                     android:onClick="onKeyClick"
-                    android:text="．" />
+                    android:text="@string/dot" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_equal"
                     style="@style/btn_cal"
                     android:onClick="onKeyClick"
-                    android:text="＝" />
+                    android:text="@string/equal" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
