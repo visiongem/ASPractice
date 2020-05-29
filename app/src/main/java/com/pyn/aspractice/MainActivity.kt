@@ -8,7 +8,7 @@ import com.pyn.aspractice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mBinding : ActivityMainBinding
+    private lateinit var mBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,5 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
         mBinding.btnDatePicker.setOnClickListener { this.startActivity(Intent(this, DatePickerActivity().javaClass)) }
+        mBinding.btnTimePicker.setOnClickListener { this.startActivity(Intent(this, TimePickerActivity::class.java)) }
+
     }
 }
