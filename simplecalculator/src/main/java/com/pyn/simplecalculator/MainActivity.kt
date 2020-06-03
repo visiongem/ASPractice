@@ -104,6 +104,10 @@ class MainActivity : AppCompatActivity() {
             R.id.btn_equal -> {
                 if (!TextUtils.isEmpty(operator)) {
                     if (operator != resources.getString(R.string.sqrt)) {
+                        if(TextUtils.isEmpty(nextNum)){
+                            nextNum = "0"
+                            showText += nextNum
+                        }
                         // + - * /
                         if (caculate()) {
                             showText = showText + inputText + result
@@ -138,6 +142,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.btn_plus, R.id.btn_minus, R.id.btn_multiply, R.id.btn_divide -> {
+                if(!TextUtils.isEmpty(operator)){
+                    return
+                }
                 operator = inputText
                 showText += operator
                 mBinding.tvResult.text = showText
