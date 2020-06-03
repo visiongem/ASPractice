@@ -6,21 +6,19 @@
     android:padding="16dp">
 
     <Button
-        android:id="@+id/btn_date_picker"
+        android:id="@+id/btnSendSimpleNotify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DatePicker" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="sendSimpleNotify" />
 
     <Button
-        android:id="@+id/btn_time_picker"
+        android:id="@+id/btnSendCounterNotify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TimePicker" />
-
-    <Button
-        android:id="@+id/btn_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notification" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="sendCounterNotify" />
 
 </LinearLayout>
