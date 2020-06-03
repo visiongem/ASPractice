@@ -1,3 +1,4 @@
+include ':mortgage'
 rootProject.name='ASPractice'
 include ':app'
 include ':simplecalculator'
