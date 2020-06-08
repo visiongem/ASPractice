@@ -1,11 +1,15 @@
 package com.pyn.mortgage
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.pyn.mortgage.databinding.ActivityMortgageBinding
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class MortgageActivity : AppCompatActivity() {
 
@@ -21,7 +25,7 @@ class MortgageActivity : AppCompatActivity() {
     private var hasAccumulation = false
 
     // 还款年限
-    private var returnYear = 0
+    private var returnYear: Double = 0.0
 
     // 商业贷款利率
     private var businessRatio: Double = 0.0
@@ -49,6 +53,115 @@ class MortgageActivity : AppCompatActivity() {
 
         initYearSpinner()
         initRatioSpinner()
+
+        mBinding.btnLoan.setOnClickListener {
+            if (TextUtils.isEmpty(mBinding.edtPrice.text.toString())) {
+                Toast.makeText(this, "购房总价不能为空", Toast.LENGTH_SHORT).show()
+            } else if (TextUtils.isEmpty(mBinding.etLoan.text.toString())) {
+                Toast.makeText(this, "按揭部分不能为空", Toast.LENGTH_SHORT).show()
+            } else {
+                showLoan()
+            }
+        }
+
+        mBinding.btnCalculate.setOnClickListener {
+            if (hasBusiness && TextUtils.isEmpty(mBinding.etBusiness.text.toString())) {
+                Toast.makeText(this, "商业贷款总额不能为空", Toast.LENGTH_SHORT).show();
+            } else if (hasBusiness && TextUtils.isEmpty(mBinding.etAccumulation.text.toString())) {
+                Toast.makeText(this, "公积金贷款总额不能为空", Toast.LENGTH_SHORT).show();
+            } else if (!hasBusiness && !hasAccumulation) {
+                Toast.makeText(this, "请选择商业贷款或者公积金贷款", Toast.LENGTH_SHORT).show();
+            } else {
+                showRepayment()
+            }
+        }
+
+        mBinding.rgPayment.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == R.id.rb_interest) {
+                isInterest = true
+            } else if (i == R.id.rb_principal) {
+                isInterest = false
+            }
+        }
+        mBinding.ckBusiness.setOnCheckedChangeListener { compoundButton, b ->
+            if (compoundButton.id == R.id.ck_business) {
+                hasBusiness = b
+            } else if (compoundButton.id == R.id.ck_accumulation) {
+                hasAccumulation = b
+            }
+        }
+        mBinding.ckAccumulation.setOnCheckedChangeListener { compoundButton, b -> }
+    }
+
+    /**
+     * 根据贷款的相关条件，计算还款总额、利息总额，以及月供
+     */
+    private fun showRepayment() {
+        var businessResult: Repayment? = Repayment()
+        var accumulationResult: Repayment? = Repayment()
+        // 申请了商业贷款
+        if (hasBusiness) {
+            val businessLoad: Double = mBinding.etBusiness.text.toString().toDouble() * 10000
+            val businessTime: Double = returnYear * 12
+            val businessRate: Double = businessRatio / 100
+            // 计算商业贷款部分的还款明细
+            businessResult = calMortgage(businessLoad, businessTime, businessRate, isInterest)
+        }
+        // 申请了公积金贷款
+        if (hasAccumulation) {
+            val accumulationLoad: Double = mBinding.etAccumulation.text.toString().toDouble() * 10000
+            val accumulationTime: Double = returnYear * 12
+            val accumulationRate: Double = businessRatio / 100
+            // 计算公积金贷款部分的还款明细
+            accumulationResult = calMortgage(accumulationLoad, accumulationTime, accumulationRate, isInterest)
+        }
+        var desc =
+            "您的贷款总额为${formatDecimal(
+                (businessResult!!.total + accumulationResult!!.total) / 10000, 2
+            )}万元"
+
+        desc =
+            "$desc　　还款总额为%s万元${formatDecimal(
+                (businessResult.total + businessResult.totalInterest +
+                        accumulationResult.total + accumulationResult.totalInterest) / 10000, 2
+            )}"
+        desc =
+            "$desc 其中利息总额为${formatDecimal(
+                (businessResult.totalInterest + accumulationResult.totalInterest) / 10000, 2
+
+            )}万元"
+        desc = "$desc　　还款总时间为${returnYear * 12}月 "
+        desc = if (isInterest) { // 如果是等额本息方式
+
+                "$desc\n每月还款金额为${formatDecimal(
+                    businessResult.monthRepayment + accumulationResult.monthRepayment, 2
+                )}元"
+
+        } else { // 如果是等额本金方式
+
+                "$desc\n首月还款金额为${formatDecimal(
+                    businessResult.monthRepayment + accumulationResult.monthRepayment, 2
+                )}元，其后每月递减${formatDecimal(businessResult.monthMinus + accumulationResult.monthMinus, 2)}元"
+
+
+        }
+        mBinding.tvPayment.text = desc
+    }
+
+    private fun showLoan() {
+        val total: Double = mBinding.edtPrice.text.toString().toDouble()
+        val rate: Double = mBinding.etLoan.text.toString().toDouble() / 100
+        val desc = java.lang.String.format("您的贷款总额为%s万元", formatDecimal(total * rate, 2))
+        mBinding.tvLoan.text = desc
+    }
+
+    /**
+     *  精确到小数点后第几位
+     */
+    private fun formatDecimal(value: Double, digit: Int): String? {
+        var bd = BigDecimal(value)
+        bd = bd.setScale(digit, RoundingMode.HALF_UP)
+        return bd.toString()
     }
 
     /**
@@ -84,7 +197,7 @@ class MortgageActivity : AppCompatActivity() {
         }
 
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            returnYear = yearArray[p2]
+            returnYear = yearArray[p2].toDouble()
         }
 
     }

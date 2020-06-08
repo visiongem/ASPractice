@@ -18,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnDatePicker.setOnClickListener { this.startActivity(Intent(this, DatePickerActivity().javaClass)) }
         mBinding.btnTimePicker.setOnClickListener { this.startActivity(Intent(this, TimePickerActivity::class.java)) }
         mBinding.btnNotification.setOnClickListener { this.startActivity(Intent(this, NotificationActivity().javaClass)) }
+
     }
 }
