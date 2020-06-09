@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pyn.aspractice">
+    package="com.pyn.login">
 
     <application
         android:allowBackup="true"
@@ -9,11 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClickRunnableActivity" />
-        <activity android:name=".NotificationActivity" />
-        <activity android:name=".TimePickerActivity" />
-        <activity android:name=".DatePickerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
