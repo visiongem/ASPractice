@@ -3,6 +3,8 @@ package com.pyn.aspractice
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.pyn.aspractice.databinding.ActivityMainBinding
 import java.lang.StringBuilder
@@ -21,6 +23,6 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnTimePicker.setOnClickListener { this.startActivity(Intent(this, TimePickerActivity::class.java)) }
         mBinding.btnNotification.setOnClickListener { this.startActivity(Intent(this, NotificationActivity().javaClass)) }
         mBinding.btnClickRunnable.setOnClickListener { this.startActivity(Intent(this, ClickRunnableActivity().javaClass)) }
-    }
 
+    }
 }
