@@ -1,4 +1,4 @@
-package com.pyn.jetpackpractice
+package com.pyn.jetpackpractice.lifecycle
 
 import androidx.lifecycle.LifecycleService
 
@@ -10,7 +10,8 @@ import androidx.lifecycle.LifecycleService
  */
 class MyService : LifecycleService() {
 
-    private var myServiceObserver : MyServiceObserver = MyServiceObserver()
+    private var myServiceObserver : MyServiceObserver =
+        MyServiceObserver()
 
     init {
         // 将观察者与被观察者绑定

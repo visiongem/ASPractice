@@ -3,8 +3,11 @@ package com.pyn.jetpackpractice
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.pyn.jetpackpractice.MyLocationListener.OnLocationChangeListener
+import com.pyn.jetpackpractice.lifecycle.MyLocationListener.OnLocationChangeListener
 import com.pyn.jetpackpractice.databinding.ActivityMainBinding
+import com.pyn.jetpackpractice.lifecycle.MyLocationListener
+import com.pyn.jetpackpractice.lifecycle.MyService
+import com.pyn.jetpackpractice.navigation.NavActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,11 @@ class MainActivity : AppCompatActivity() {
             // 停止服务
             val intent = Intent(this, MyService::class.java)
             stopService(intent)
+        }
+
+        mBinding.btnToNavigation.setOnClickListener {
+            val intent = Intent(this, NavActivity().javaClass)
+            startActivity(intent)
         }
     }
 }

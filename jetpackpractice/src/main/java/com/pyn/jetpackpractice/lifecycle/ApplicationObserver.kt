@@ -1,4 +1,4 @@
-package com.pyn.jetpackpractice
+package com.pyn.jetpackpractice.lifecycle
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle

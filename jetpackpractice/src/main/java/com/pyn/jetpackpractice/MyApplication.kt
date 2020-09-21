@@ -2,6 +2,7 @@ package com.pyn.jetpackpractice
 
 import android.app.Application
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.pyn.jetpackpractice.lifecycle.ApplicationObserver
 
 /**
  * @author pengyanni

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JetpackPractice</string>
+    <string name="hello_blank_fragment">Hello blank nav fragment</string>
 </resources>
