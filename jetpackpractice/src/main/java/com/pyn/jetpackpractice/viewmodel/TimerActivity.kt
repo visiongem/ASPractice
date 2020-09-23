@@ -37,5 +37,9 @@ class TimerActivity : AppCompatActivity() {
 
         liveData.observe(this, Observer { mBinding.tvTimer.text = "TIME:$it" })
 
+        mBinding.btnResetTime.setOnClickListener {
+            liveData.value = 0
+            timerViewModel.startTiming()
+        }
     }
 }
