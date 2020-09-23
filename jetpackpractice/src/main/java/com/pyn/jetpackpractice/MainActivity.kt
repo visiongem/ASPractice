@@ -8,6 +8,7 @@ import com.pyn.jetpackpractice.databinding.ActivityMainBinding
 import com.pyn.jetpackpractice.lifecycle.MyLocationListener
 import com.pyn.jetpackpractice.lifecycle.MyService
 import com.pyn.jetpackpractice.navigation.NavActivity
+import com.pyn.jetpackpractice.room.RoomActivity
 import com.pyn.jetpackpractice.viewmodel.TimerActivity
 
 class MainActivity : AppCompatActivity() {
@@ -50,5 +51,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TimerActivity().javaClass)
             startActivity(intent)
         }
+
+        mBinding.btnRoom.setOnClickListener {
+            val intent = Intent(this, RoomActivity().javaClass)
+            startActivity(intent)
+        }
+
     }
 }
