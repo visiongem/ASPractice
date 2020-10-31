@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.pyn.jetpackpractice.lifecycle.MyLocationListener.OnLocationChangeListener
 import com.pyn.jetpackpractice.databinding.ActivityMainBinding
+import com.pyn.jetpackpractice.databinding.DatabindingActivity
 import com.pyn.jetpackpractice.lifecycle.MyLocationListener
 import com.pyn.jetpackpractice.lifecycle.MyService
 import com.pyn.jetpackpractice.navigation.NavActivity
@@ -54,6 +55,11 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.btnRoom.setOnClickListener {
             val intent = Intent(this, RoomActivity().javaClass)
+            startActivity(intent)
+        }
+
+        mBinding.btnDatabinding.setOnClickListener {
+            val intent = Intent(this, DatabindingActivity().javaClass)
             startActivity(intent)
         }
 
