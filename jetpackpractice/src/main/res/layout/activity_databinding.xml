@@ -64,14 +64,17 @@
 
         <ImageView
             android:id="@+id/img_net"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
             app:image="@{networkImage}" />
 
         <ImageView
             android:id="@+id/img_local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
             app:image="@{localImage}" />
     </LinearLayout>
 </layout>
