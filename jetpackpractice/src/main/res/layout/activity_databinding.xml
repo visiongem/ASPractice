@@ -15,6 +15,13 @@
 
         <import type="com.pyn.jetpackpractice.databinding.BookRatingUtil" />
 
+        <variable
+            name="networkImage"
+            type="String" />
+
+        <variable
+            name="localImage"
+            type="int" />
     </data>
 
     <LinearLayout
@@ -51,7 +58,20 @@
             android:onClick="@{EventHandler.onBtnClick}"
             android:text="Click me" />
 
-        <include layout="@layout/layout_content"
-            app:book = "@{book}"/>
+        <include
+            layout="@layout/layout_content"
+            app:book="@{book}" />
+
+        <ImageView
+            android:id="@+id/img_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:image="@{networkImage}" />
+
+        <ImageView
+            android:id="@+id/img_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:image="@{localImage}" />
     </LinearLayout>
 </layout>

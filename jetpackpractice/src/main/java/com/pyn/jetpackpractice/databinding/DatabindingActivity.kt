@@ -19,6 +19,9 @@ class DatabindingActivity : AppCompatActivity() {
 
         binding.eventHandler = EventHandleListener(this)
 
+        binding.networkImage = "https://static01.imgkr.com/temp/a5f0ff2e7ab741ffa49504c097b56fac.jpg"
+
+        binding.localImage = R.drawable.ic_launcher_background
 
     }
 }
