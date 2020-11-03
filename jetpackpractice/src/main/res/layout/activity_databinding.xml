@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="EventHandler"
+            type="com.pyn.jetpackpractice.databinding.EventHandleListener" />
+
+        <variable
             name="book"
             type="com.pyn.jetpackpractice.databinding.Book" />
 
@@ -39,5 +43,11 @@
             android:layout_gravity="center_horizontal"
             android:text="@{BookRatingUtil.INSTANCE.getRatingStr(book.rating)}" />
 
+        <Button
+            android:id="@+id/btn_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{EventHandler.onBtnClick}"
+            android:text="Click me"/>
     </LinearLayout>
 </layout>

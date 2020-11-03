@@ -15,7 +15,9 @@ class DatabindingActivity : AppCompatActivity() {
         val binding: ActivityDatabindingBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_databinding)
 
-        binding.book = book;
+        binding.book = book
+
+        binding.eventHandler = EventHandleListener(this)
 
 
     }
