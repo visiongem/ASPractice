@@ -30,6 +30,10 @@
         <variable
             name="ClickHandler"
             type="com.pyn.jetpackpractice.databinding.DatabindingActivity.ClickHandler" />
+
+        <variable
+            name="viewModel"
+            type="com.pyn.jetpackpractice.databinding.TwoWayBindingViewModel" />
     </data>
 
     <LinearLayout
@@ -93,5 +97,10 @@
             android:layout_height="wrap_content"
             android:onClick="@{ClickHandler.onClick}"
             android:text="Change padding" />
+
+        <EditText
+            android:text="@={viewModel.userName}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

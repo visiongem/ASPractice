@@ -31,6 +31,8 @@ class DatabindingActivity : AppCompatActivity() {
         binding.clickHandler = ClickHandler()
         binding.imagePadding = 40
 
+        binding.viewModel = TwoWayBindingViewModel()
+
     }
 
     inner class ClickHandler {
