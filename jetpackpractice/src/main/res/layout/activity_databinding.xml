@@ -22,6 +22,14 @@
         <variable
             name="localImage"
             type="int" />
+
+        <variable
+            name="imagePadding"
+            type="int" />
+
+        <variable
+            name="ClickHandler"
+            type="com.pyn.jetpackpractice.databinding.DatabindingActivity.ClickHandler" />
     </data>
 
     <LinearLayout
@@ -64,17 +72,26 @@
 
         <ImageView
             android:id="@+id/img_net"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:scaleType="fitXY"
-            app:image="@{networkImage}" />
+            app:imageUrl="@{networkImage}"
+            app:defaultImageResource="@{localImage}"
+            app:padding="@{imagePadding}" />
 
         <ImageView
             android:id="@+id/img_local"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:scaleType="fitXY"
             app:image="@{localImage}" />
+
+        <Button
+            android:id="@+id/btn_change_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{ClickHandler.onClick}"
+            android:text="Change padding" />
     </LinearLayout>
 </layout>
