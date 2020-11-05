@@ -15,7 +15,7 @@ class DatabindingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var book = Book("title", "author", 1)
+        var book = Book("title", "author", 1,"https://static01.imgkr.com/temp/a5f0ff2e7ab741ffa49504c097b56fac.jpg")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding)
 
