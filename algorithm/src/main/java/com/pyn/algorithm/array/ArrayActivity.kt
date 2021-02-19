@@ -1,0 +1,19 @@
+package com.pyn.algorithm.array
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import com.pyn.algorithm.R
+
+class ArrayActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_array)
+
+        var nums: IntArray = intArrayOf(1, 1, 2, 2)
+        var nums2 = intArrayOf(0,0,1,1,1,2,2,3,3,4)
+        var count = ArraySolutionManager.removeDuplicates(nums)
+        Log.d("removeDuplicates", "2 removeDuplicates1 = $count")
+        Log.d("removeDuplicates", "5 removeDuplicates2 = ${ArraySolutionManager.removeDuplicates(nums2)}")
+    }
+}
