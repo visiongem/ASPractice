@@ -15,5 +15,8 @@ class ArrayActivity : AppCompatActivity() {
         var count = ArraySolutionManager.removeDuplicates(nums)
         Log.d("removeDuplicates", "2 removeDuplicates1 = $count")
         Log.d("removeDuplicates", "5 removeDuplicates2 = ${ArraySolutionManager.removeDuplicates(nums2)}")
+
+        val rotateNum = intArrayOf(1,2,3,4,5,6,7)
+        ArraySolutionManager.rotate(rotateNum, 3)
     }
 }
