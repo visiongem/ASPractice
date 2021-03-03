@@ -18,5 +18,9 @@ class ArrayActivity : AppCompatActivity() {
 
         val rotateNum = intArrayOf(1,2,3,4,5,6,7)
         ArraySolutionManager.rotate(rotateNum, 3)
+
+        val singleNum = intArrayOf(4,1,2,1,2)
+        Log.d("singleNumber", "singleNumber = ${ ArraySolutionManager.singleNumber(singleNum)}")
+
     }
 }
