@@ -123,7 +123,78 @@ object ArraySolutionManager {
             singleNum = singleNum.xor(nums[i])
         }
         return singleNum
+    }
 
+    /**
+     * 6. 两个数组的交集 II
+     * 给定两个数组，编写一个函数来计算它们的交集。
+     */
+    fun intersect(nums1: IntArray, nums2: IntArray): IntArray {
+        var result: IntArray = nums1
+
+
+
+        return result
+    }
+
+    /**
+     * 7. 加一
+     * 给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+     * 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+     * 你可以假设除了整数 0 之外，这个整数不会以零开头。
+     */
+    fun plusOne(digits: IntArray): IntArray {
+
+        return digits
+    }
+
+    /**
+     * 8. 移动零
+     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     * 必须在原数组上操作，不能拷贝额外的数组。
+     * 尽量减少操作次数。
+     */
+    fun moveZeroes(nums: IntArray): Unit {
+
+    }
+
+    /**
+     * 9. 两数之和
+     * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+     * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+     * 你可以按任意顺序返回答案。
+     */
+    fun twoSum(nums: IntArray, target: Int): IntArray {
+
+        return nums
+    }
+
+    /**
+     * 10. 有效的数独
+     * 判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。
+     * 数字 1-9 在每一行只能出现一次。
+     * 数字 1-9 在每一列只能出现一次。
+     * 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
+     * 一个有效的数独（部分已被填充）不一定是可解的。
+     * 只需要根据以上规则，验证已经填入的数字是否有效即可。
+     * 给定数独序列只包含数字 1-9 和字符 '.' 。
+     * 给定数独永远是 9x9 形式的。
+     */
+    fun isValidSudoku(board: Array<CharArray>): Boolean {
+
+        return true
+    }
+
+    /**
+     * 11. 旋转图像
+     * 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+     * 你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+     * matrix.length == n
+     * matrix[i].length == n
+     * 1 <= n <= 20
+     * -1000 <= matrix[i][j] <= 1000
+     */
+    fun rotate(matrix: Array<IntArray>): Unit {
 
     }
 }
