@@ -1,5 +1,8 @@
 package com.pyn.algorithm.array
 
+import java.lang.Math.*
+import kotlin.math.sqrt
+
 /**
  * 鹅厂是一家能让你拥有多元化职业发展的平台。尊重个性、轻松自在的工作环境、有趣的互联网工作。
  */
@@ -49,7 +52,7 @@ object GooseManger {
 
         if (n < 4) {
             return true
-        }else{
+        } else {
             return canWinNim(n - 4)
         }
     }
@@ -58,7 +61,24 @@ object GooseManger {
      * 2的幂
      * 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
      */
-    fun isPowerOfTwo(n: Int): Boolean {
-        return true
+     fun isPowerOfTwo(n: Int): Boolean {
+
+        /*if (n == 1) {
+            return true
+        }
+
+        if (n % 2 != 0) {
+            return false
+        } else {
+            return isPowerOfTwo(n / 2)
+        }*/
+        var n_ = n
+        if (n_ == 0) {
+            return false
+        }
+        while (n_ % 2 == 0) {
+            n_ /= 2
+        }
+        return n_ == 1
     }
 }

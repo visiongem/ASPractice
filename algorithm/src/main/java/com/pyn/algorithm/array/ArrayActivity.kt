@@ -22,5 +22,8 @@ class ArrayActivity : AppCompatActivity() {
         val singleNum = intArrayOf(4,1,2,1,2)
         Log.d("singleNumber", "singleNumber = ${ ArraySolutionManager.singleNumber(singleNum)}")
 
+        val powerNum = 16
+        Log.d("isPowerOfTwo", "isPowerOfTwo = ${ GooseManger.isPowerOfTwo(powerNum)}")
+
     }
 }
