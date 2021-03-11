@@ -35,7 +35,7 @@ object ArraySolutionManager {
             return 0
         }
 
-        var ans = 0;
+        var ans = 0
         var n = prices.size
         for (i in 1 until n) {
             ans += Math.max(0, prices[i] - prices[i - 1]);
