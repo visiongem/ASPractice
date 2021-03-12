@@ -61,7 +61,7 @@ object GooseManger {
      * 2的幂
      * 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
      */
-     fun isPowerOfTwo(n: Int): Boolean {
+    fun isPowerOfTwo(n: Int): Boolean {
 
         /*if (n == 1) {
             return true
@@ -96,13 +96,42 @@ object GooseManger {
 
         var ans = 0
         var tempIndex = 0
-        for (index in 1 until prices.size){
-            if (prices[index] > prices[tempIndex]){
+        for (index in 1 until prices.size) {
+            if (prices[index] > prices[tempIndex]) {
                 ans = Math.max(ans, prices[index] - prices[tempIndex])
-            }else{
+            } else {
                 tempIndex = index
             }
         }
         return ans
     }
+
+    /**
+     * Example:
+     * var li = ListNode(5)
+     * var v = li.`val`
+     * Definition for singly-linked list.
+     * class ListNode(var `val`: Int) {
+     *     var next: ListNode? = null
+     * }
+     */
+    /**
+     * 反转链表
+     * 反转一个单链表。
+     */
+    fun reverseList(head: ListNode?): ListNode? {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        var newHead = reverseList(head.next)
+        head?.next?.next = head
+        head.next = null
+        return newHead
+    }
+}
+
+class ListNode(var value: Int) {
+    var next: ListNode? = null //指向下一个存储节点的next指针
 }
