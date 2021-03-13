@@ -1,6 +1,7 @@
 package com.pyn.algorithm.array
 
 import java.lang.Math.*
+import java.util.*
 import kotlin.math.sqrt
 
 /**
@@ -129,6 +130,46 @@ object GooseManger {
         head?.next?.next = head
         head.next = null
         return newHead
+    }
+
+    /**
+     * 多数元素
+     * 给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
+     * 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+     *
+     * 进阶：尝试设计时间复杂度为 O(n)、空间复杂度为 O(1) 的算法解决此问题。
+     */
+    fun majorityElement(nums: IntArray): Int {
+
+        // 哈希表法
+        /*var n = nums.size/2
+        var result : HashMap<Int, Int> = HashMap()
+        var res:Int = nums[0]
+        for (index in nums.indices){
+            if (result.containsKey(nums[index])){
+                result.put(nums[index], result.get(nums[index])!!+1)
+                if (result.get(nums[index])!!>n){
+                    res = nums[index]
+                }
+            }else {
+                result.put(nums[index], 1)
+            }
+        }
+        return res*/
+
+        // 排序法 排序后，下标为n/2的数一定是众数
+        /*Arrays.sort(nums);
+        return nums[nums.size / 2];*/
+
+        // 摩尔投票法，遇到相同的数，就投一票，遇到不同的数，就减一票，最后还存在票的数就是众数
+        var count = 0
+        var result = -1
+        for (index in nums.indices) {
+            if (count == 0) result = nums[index];
+            if (nums[index] == result) ++count;
+            else --count;
+        }
+        return result
     }
 }
 
