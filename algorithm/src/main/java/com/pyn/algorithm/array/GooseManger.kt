@@ -2,7 +2,6 @@ package com.pyn.algorithm.array
 
 import java.lang.Math.*
 import java.util.*
-import kotlin.math.sqrt
 
 /**
  * 鹅厂是一家能让你拥有多元化职业发展的平台。尊重个性、轻松自在的工作环境、有趣的互联网工作。
@@ -190,6 +189,26 @@ object GooseManger {
             s[index] = s[s.size - index - 1]
             s[s.size - index - 1] = temp
         }
+    }
+
+    /**
+     * 格雷编码
+     * 格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差异。
+     * 给定一个代表编码总位数的非负整数 n，打印其格雷编码序列。即使有多个不同答案，你也只需要返回其中一种。
+     * 格雷编码序列必须以 0 开头。
+     */
+    fun grayCode(n: Int): List<Int> {
+        var gray = arrayListOf<Int>()
+        gray.add(0)
+        for (i in 0 until n) {
+            val add = 1 shl i //要加的数
+
+            //倒序遍历，并且加上一个值添加到结果中
+            for (j in (gray.size - 1) downTo 0) {
+                gray.add(gray.get(j) + add);
+            }
+        }
+        return gray
     }
 }
 
