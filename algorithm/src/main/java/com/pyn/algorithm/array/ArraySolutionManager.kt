@@ -130,11 +130,34 @@ object ArraySolutionManager {
      * 给定两个数组，编写一个函数来计算它们的交集。
      */
     fun intersect(nums1: IntArray, nums2: IntArray): IntArray {
-        var result: IntArray = nums1
 
+        nums1.sort()
+        nums2.sort()
 
+        var size1 = nums1.size
+        var size2 = nums2.size
 
-        return result
+        var index1 = 0
+        var index2 = 0
+        var index = 0
+
+        var result: IntArray = IntArray(if (size1 > size2) size2 else size1)
+
+        while (index1 < size1 && index2 < size2) {
+
+            if (nums1[index1] < nums2[index2]) {
+                index1++
+            } else if (nums1[index1] > nums2[index2]) {
+                index2++
+            } else {
+                result[index] = nums1[index1]
+                index1++
+                index2++
+                index++
+            }
+        }
+
+        return result.copyOfRange(0, index - 1)
     }
 
     /**
