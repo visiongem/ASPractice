@@ -168,6 +168,26 @@ object ArraySolutionManager {
      */
     fun plusOne(digits: IntArray): IntArray {
 
+        for (index in digits.size - 1 downTo 0) {
+
+            if (index == 0 && digits[index] == 9) {
+                digits[0] = 0
+                var result = IntArray(digits.size + 1)
+                result[0] = 1
+                for (index in digits.indices) {
+                    result[index + 1] = digits[index]
+                }
+                return result
+            }
+            if (digits[index] == 9) {
+                digits[index] = 0
+                continue
+            } else {
+                digits[index]++
+                break
+            }
+        }
+
         return digits
     }
 
