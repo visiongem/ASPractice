@@ -230,9 +230,25 @@ object ArraySolutionManager {
      * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
      * 你可以按任意顺序返回答案。
      */
-    fun twoSum(nums: IntArray, target: Int): IntArray {
+    fun twoSum(nums: IntArray, target: Int): IntArray? {
+        /*for (index in 0..(nums.size - 2)) {
+            for (index2 in index + 1 until nums.size) {
+                if (nums[index] + nums[index2] == target) {
+                    return intArrayOf(index, index2)
+                }
+            }
+        }
+        return null*/
+        for (index in nums.indices) {
 
-        return nums
+            if (nums.contains(target - nums[index])) {
+                var index1 = nums.indexOf(target - nums[index])
+                if (index != index1) {
+                    return intArrayOf(index, index1)
+                }
+            }
+        }
+        return null
     }
 
     /**
