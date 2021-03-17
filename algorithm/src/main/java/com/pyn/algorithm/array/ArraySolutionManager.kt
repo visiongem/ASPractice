@@ -200,6 +200,28 @@ object ArraySolutionManager {
      */
     fun moveZeroes(nums: IntArray): Unit {
 
+        // 双指针方式，index0指向的是 第一个为0的下标
+        var index0 = 0
+        for (index in nums.indices) {
+            // 遍历数组，当碰到0的时候
+            if (nums[index] == 0) {
+
+                if (nums[index0] == 0) {
+                    // 前面已经有0了，继续，不记录第二个0
+                    continue
+                } else {
+                    // 把第一个为0的下标记住
+                    index0 = index
+                }
+            } else {
+                // 交换第一个0与数的位置
+                var temp = nums[index]
+                nums[index] = nums[index0]
+                nums[index0] = temp
+                // 将0的下标下移一位 也许它是第二0  也许它就是一个数，为0的时候与下个数交换，为数的时候，等到下个0出现再赋值下个0 的位置
+                index0++
+            }
+        }
     }
 
     /**
