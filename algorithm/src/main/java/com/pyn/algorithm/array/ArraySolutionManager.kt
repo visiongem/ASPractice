@@ -273,7 +273,7 @@ object ArraySolutionManager {
                 if (board[i][j] != '.') {
                     var num = board[i][j] - '1'
                     var index_box = (i / 3) * 3 + j / 3
-                    if (rows[i][num] == 1 || columns[j][num]==1 || boxes[index_box][num]==1) {
+                    if (rows[i][num] == 1 || columns[j][num] == 1 || boxes[index_box][num] == 1) {
                         return false
                     }
                     rows[i][num] = 1
@@ -296,6 +296,18 @@ object ArraySolutionManager {
      * -1000 <= matrix[i][j] <= 1000
      */
     fun rotate(matrix: Array<IntArray>): Unit {
-
+        var length = matrix.size
+        //因为是对称的，只需要计算循环前半行即可
+        for (i in 0 until length / 2) {
+            for (j in i until length - i - 1) {
+                var temp = matrix[i][j]
+                var m = length - j - 1
+                var n = length - i - 1
+                matrix[i][j] = matrix[m][i]
+                matrix[m][i] = matrix[n][m]
+                matrix[n][m] = matrix[j][n]
+                matrix[j][n] = temp
+            }
+        }
     }
 }
