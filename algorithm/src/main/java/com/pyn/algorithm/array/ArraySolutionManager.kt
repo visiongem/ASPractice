@@ -264,6 +264,25 @@ object ArraySolutionManager {
      */
     fun isValidSudoku(board: Array<CharArray>): Boolean {
 
+        var rows = Array(9) { IntArray(9) }
+        var columns = Array(9) { IntArray(9) }
+        var boxes = Array(9) { IntArray(9) }
+
+        for (i in 0 until 9) {
+            for (j in 0 until 9) {
+                if (board[i][j] != '.') {
+                    var num = board[i][j] - '1'
+                    var index_box = (i / 3) * 3 + j / 3
+                    if (rows[i][num] == 1 || columns[j][num]==1 || boxes[index_box][num]==1) {
+                        return false
+                    }
+                    rows[i][num] = 1
+                    columns[j][num] = 1
+                    boxes[index_box][num] = 1
+
+                }
+            }
+        }
         return true
     }
 
