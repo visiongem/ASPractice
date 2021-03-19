@@ -25,5 +25,7 @@ class ArrayActivity : AppCompatActivity() {
         val powerNum = 16
         Log.d("isPowerOfTwo", "isPowerOfTwo = ${ GooseManger.isPowerOfTwo(powerNum)}")
 
+        val reverseNum = -120
+        Log.d("reverse", "-120 reverse = ${StringSolutionManager.reverse(reverseNum)}")
     }
 }
