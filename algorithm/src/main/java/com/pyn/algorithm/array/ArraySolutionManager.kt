@@ -297,7 +297,7 @@ object ArraySolutionManager {
      */
     fun rotate(matrix: Array<IntArray>): Unit {
         var length = matrix.size
-        //因为是对称的，只需要计算循环前半行即可
+        // 因为是对称的，只需要计算循环前半行即可
         for (i in 0 until length / 2) {
             for (j in i until length - i - 1) {
                 var temp = matrix[i][j]
