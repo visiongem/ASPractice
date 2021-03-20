@@ -27,5 +27,7 @@ class ArrayActivity : AppCompatActivity() {
 
         val reverseNum = -120
         Log.d("reverse", "-120 reverse = ${StringSolutionManager.reverse(reverseNum)}")
+
+        StringSolutionManager.firstUniqChar("leetcode")
     }
 }

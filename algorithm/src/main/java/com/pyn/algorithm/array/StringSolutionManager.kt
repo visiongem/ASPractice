@@ -41,4 +41,36 @@ object StringSolutionManager {
             }
         }
     }
+
+    /**
+     * 3 字符串中的第一个唯一字符
+     * 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+     * 提示：你可以假定该字符串只包含小写字母。
+     * s = "leetcode"
+     * 返回 0
+     * s = "loveleetcode"
+     * 返回 2
+     */
+    fun firstUniqChar(s: String): Int {
+
+        // 用哈希表解决，两边循环
+        var result: MutableMap<String, Int> = HashMap<String, Int>()
+        for (index in s.indices) {
+
+            if (result.containsKey(s[index].toString())){
+                // 如果还找到了这个字母，就都标志位2 不管具体多少个，反正都不符合要返回的了
+                result[s[index].toString()] = 2
+            }else {
+                result.put(s[index].toString(), 1)
+            }
+        }
+
+        // 循环遍历，当字母出现为1 ，就返回，就是第一个了
+        for (j in s.indices){
+            if(result[s[j].toString()] == 1)
+                return j
+        }
+
+        return -1
+    }
 }
