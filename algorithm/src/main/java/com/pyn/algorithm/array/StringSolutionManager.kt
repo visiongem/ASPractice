@@ -1,5 +1,8 @@
 package com.pyn.algorithm.array
 
+import java.util.*
+import kotlin.collections.HashMap
+
 object StringSolutionManager {
 
     /**
@@ -57,20 +60,41 @@ object StringSolutionManager {
         var result: MutableMap<String, Int> = HashMap<String, Int>()
         for (index in s.indices) {
 
-            if (result.containsKey(s[index].toString())){
+            if (result.containsKey(s[index].toString())) {
                 // 如果还找到了这个字母，就都标志位2 不管具体多少个，反正都不符合要返回的了
                 result[s[index].toString()] = 2
-            }else {
+            } else {
                 result.put(s[index].toString(), 1)
             }
         }
 
         // 循环遍历，当字母出现为1 ，就返回，就是第一个了
-        for (j in s.indices){
-            if(result[s[j].toString()] == 1)
+        for (j in s.indices) {
+            if (result[s[j].toString()] == 1)
                 return j
         }
 
         return -1
+    }
+
+    /**
+     * 4 有效的字母异位词
+     * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+     * 你可以假设字符串只包含小写字母。
+     * 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
+     */
+    fun isAnagram(s: String, t: String): Boolean {
+        // 特判，长度不同必定不是
+        if (s.length != t.length) {
+            return false
+        }
+        // 两个字符串排序后是否相等
+        var schar = s.toCharArray()
+        var tchar = t.toCharArray()
+
+        schar.sort()
+        tchar.sort()
+
+        return schar.contentEquals(tchar)
     }
 }
