@@ -120,6 +120,42 @@ object StringSolutionManager {
             right--
         }
         return true
+    }
 
+    /**
+     * 字符串转换整数 (atoi)
+     */
+    fun myAtoi(s: String): Int {
+
+        return 0
+    }
+
+    /**
+     * 实现 strStr()
+     * 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。
+     */
+    fun strStr(haystack: String, needle: String): Int {
+
+        return 0
+    }
+
+    /**
+     * 外观数列
+     * 给定一个正整数 n ，输出外观数列的第 n 项。
+     * 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。
+     */
+    fun countAndSay(n: Int): String {
+
+        return ""
+    }
+
+    /**
+     * 最长公共前缀
+     * 编写一个函数来查找字符串数组中的最长公共前缀。
+     * 如果不存在公共前缀，返回空字符串 ""。
+     */
+    fun longestCommonPrefix(strs: Array<String>): String {
+
+        return ""
     }
 }
