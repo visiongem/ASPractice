@@ -156,6 +156,18 @@ object StringSolutionManager {
      */
     fun longestCommonPrefix(strs: Array<String>): String {
 
-        return ""
+        if (strs.isEmpty()){
+            return ""
+        }
+
+        for (i in strs[0].indices){
+            var chars = strs[0][i]
+            for(j in 1 until strs.size){
+                if (strs[j].length <=i || strs[j][i] != chars){
+                    return strs[0].substring(0,i)
+                }
+            }
+        }
+        return strs[0]
     }
 }
