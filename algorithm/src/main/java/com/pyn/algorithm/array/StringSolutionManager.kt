@@ -136,7 +136,26 @@ object StringSolutionManager {
      */
     fun strStr(haystack: String, needle: String): Int {
 
-        return 0
+        // 如果haystack没有needle 或者 haystack的长度就短于 needle,肯定就没有这个东西了
+        if (!haystack.contains(needle) || haystack.length < needle.length) {
+            return -1
+        }
+        // needle为空，就是0开始
+        if (needle.isEmpty()) {
+            return 0
+        }
+        // 开个循环去找
+        for (index in haystack.indices) {
+            if (haystack[index] == needle[0]) {
+                if (haystack.substring(index, index + needle.length) == needle) {
+                    return index
+                }
+            }
+        }
+
+        return -1
+        // 简单就api
+        //return haystack.indexOf(needle)
     }
 
     /**
@@ -156,15 +175,15 @@ object StringSolutionManager {
      */
     fun longestCommonPrefix(strs: Array<String>): String {
 
-        if (strs.isEmpty()){
+        if (strs.isEmpty()) {
             return ""
         }
 
-        for (i in strs[0].indices){
+        for (i in strs[0].indices) {
             var chars = strs[0][i]
-            for(j in 1 until strs.size){
-                if (strs[j].length <=i || strs[j][i] != chars){
-                    return strs[0].substring(0,i)
+            for (j in 1 until strs.size) {
+                if (strs[j].length <= i || strs[j][i] != chars) {
+                    return strs[0].substring(0, i)
                 }
             }
         }
