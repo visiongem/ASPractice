@@ -1,6 +1,6 @@
 package com.pyn.algorithm.array
 
-import java.util.*
+import java.lang.StringBuilder
 import kotlin.collections.HashMap
 
 object StringSolutionManager {
@@ -162,11 +162,38 @@ object StringSolutionManager {
      * 外观数列
      * 给定一个正整数 n ，输出外观数列的第 n 项。
      * 「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。
+     * 1 <= n <= 30
      */
     fun countAndSay(n: Int): String {
+        // 递归出口
+        if (n == 1) {
+            return "1"
+        }
+        // 假设我们获得上一次的结果为 s1 = 112213
+        var s = countAndSay(n - 1)
+        // 定义结果
+        var result = StringBuilder();
+        // 对s遍历处理获取值
+        var local = s[0]
+        var count = 0
+        for (i in s.indices) {
+            // 设定计数器 计算同一个数字出现的次数 count
+            if (s[i] == local) {
+                count++
+            } else {
+                // 不符合 记录下
+                result.append(count)
+                result.append(local)
+                count = 1
+                local = s[i]
+            }
+        }
+        result.append(count)
+        result.append(local)
+        return result.toString()
 
-        return ""
     }
+
 
     /**
      * 最长公共前缀
