@@ -165,6 +165,15 @@ object StringSolutionManager {
      * 1 <= n <= 30
      */
     fun countAndSay(n: Int): String {
+
+        /*解题思路
+        先确立递归出口 n = 1时 为1
+        对上一个结果进行遍历获取值
+        设定计数器，计算同一个数字出现的次数
+        如果数字相同，计数器加一
+        若当前不满足，则将上次的值记录下，并重置计数器，重置需要判断是否重复的字符
+        将最后的结果也追加到字符串上*/
+
         // 递归出口
         if (n == 1) {
             return "1"
@@ -190,8 +199,8 @@ object StringSolutionManager {
         }
         result.append(count)
         result.append(local)
-        return result.toString()
 
+        return result.toString()
     }
 
 
