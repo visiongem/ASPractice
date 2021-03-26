@@ -127,7 +127,36 @@ object StringSolutionManager {
      */
     fun myAtoi(s: String): Int {
 
-        return 0
+        var str = s.trim()
+        if (str.isEmpty()) {
+            return 0
+        }
+        // 判断字符串中第一个字符是否是正数"+"或者数字，true为正数 否则为负数
+        var flag = true
+        // 数字的开始下标 如果有"+"或"-"那么下标就是从1开始
+        var index = 0
+        if (str[index] == '+' || str[index] == '-') {
+            index = 1
+            if (str[0] == '-') {
+                flag = false
+            }
+        }
+
+        var result = 0;
+        // 读入下一个字符，计算到整数中，直到到达下一个非数字字符或到达输入的结尾
+        for (i in index until str.length) {
+            if (!str[i].isDigit()) {
+                break
+            }
+            var temp = result * 10 + (str[i] - '0')
+            // 判断是否溢出
+            if (temp / 10 != result) {
+                // 数值溢出、根据flag条件返回 正数最大值或负数最大值
+                return if (flag) Int.MAX_VALUE else Int.MIN_VALUE
+            }
+            result = temp
+        }
+        return if (flag) result else result * -1
     }
 
     /**

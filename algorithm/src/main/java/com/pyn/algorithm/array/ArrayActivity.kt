@@ -29,5 +29,8 @@ class ArrayActivity : AppCompatActivity() {
         Log.d("reverse", "-120 reverse = ${StringSolutionManager.reverse(reverseNum)}")
 
         StringSolutionManager.firstUniqChar("leetcode")
+
+        var atoiNum = "    -42"
+        Log.d("Atoi", " = ${StringSolutionManager.myAtoi(atoiNum)}")
     }
 }
