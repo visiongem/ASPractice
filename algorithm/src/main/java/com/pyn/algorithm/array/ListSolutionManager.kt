@@ -14,7 +14,11 @@ object ListSolutionManager {
      * 不要从你的函数中返回任何结果。
      */
     fun deleteNode(node: ListNode?) {
-
+        node?.`val` = node?.next?.`val`!!
+        node?.next = node?.next?.next
     }
 
+    class ListNode(var `val`: Int) {
+        var next: ListNode? = null
+    }
 }
