@@ -1,5 +1,7 @@
 package com.pyn.algorithm.array
 
+import java.util.*
+
 /**
  * 链表 简单算法
  */
@@ -35,7 +37,7 @@ object ListSolutionManager {
             fast = fast?.next
         }
         // 如果fast为空，表示删除的事头结点
-        if (fast == null){
+        if (fast == null) {
             return head?.next
         }
 
@@ -54,7 +56,52 @@ object ListSolutionManager {
      * 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
      */
     fun reverseList(head: ListNode?): ListNode? {
+        // 递归
+        /*if (head?.next == null) {
+            return head
+        }
 
+        var newHead = reverseList(head.next)
+        head?.next?.next = head
+        head.next = null
+        return newHead*/
+        // 使用栈解决
+        /*var stack: Stack<ListNode> = Stack()
+        var head = head
+        // 把链表放入栈中
+        while (head != null) {
+            stack.push(head)
+            head = head.next
+        }
+        if (stack.isEmpty()) {
+            return null
+        }
+        var node = stack.pop()
+        var dummy = node
+        // 栈中的节点全部出栈，然后重新连接成一个新的链表
+        while (!stack.isEmpty()) {
+            var tempNode = stack.pop()
+            node.next = tempNode
+            node = node.next
+        }
+        node.next = null
+        return dummy*/
+
+        // 双链表求解
+        var newHead: ListNode? = null
+        var head = head
+        while (head != null) {
+            //先保存访问的节点的下一个节点，保存起来
+            //留着下一步访问的
+            var temp: ListNode? = head?.next
+            //每次访问的原链表节点都会成为新链表的头结点，
+            //其实就是把新链表挂到访问的原链表节点的
+            //后面就行了
+            head.next = newHead
+            newHead = head
+            head = temp
+        }
+        return newHead
     }
 
     /**
