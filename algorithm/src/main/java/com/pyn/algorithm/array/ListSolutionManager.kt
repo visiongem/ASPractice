@@ -1,5 +1,8 @@
 package com.pyn.algorithm.array
 
+import java.util.*
+import kotlin.collections.HashSet
+
 /**
  * 链表 简单算法
  */
@@ -126,7 +129,7 @@ object ListSolutionManager {
             if (l1.`val` <= l2.`val`) {
                 temp.next = l1
                 l1 = l1.next
-            }else{
+            } else {
                 temp.next = l2
                 l2 = l2.next
             }
@@ -142,6 +145,22 @@ object ListSolutionManager {
      */
     fun isPalindrome(head: ListNode?): Boolean {
 
+        var stackList: Stack<Int> = Stack()
+        var head = head
+        var head2 = head
+        while (head != null) {
+            stackList.push(head.`val`)
+            head = head.next
+        }
+
+        while (head2 != null) {
+            if (head2.`val` != stackList.pop()) {
+                return false
+            } else {
+                head2 = head2.next
+            }
+        }
+        return true
     }
 
     /**
@@ -151,6 +170,31 @@ object ListSolutionManager {
      * 如果链表中存在环，则返回 true 。 否则，返回 false 。
      */
     fun hasCycle(head: ListNode?): Boolean {
+        // 存放到集合中
+        /*var set = HashSet<ListNode>()
+        var head = head
+        while (head != null) {
+            if (set.contains(head)) {
+                return true
+            }
+            set.add(head)
+            head = head.next
+        }
+        return false*/
 
+        // 快慢指针解决
+        if (head ==null){
+            return false
+        }
+        var slow = head
+        var fast = head
+        while (fast!=null && fast.next!=null){
+            slow = slow?.next
+            fast = fast?.next?.next
+            if (slow == fast){
+                return true
+            }
+        }
+        return false
     }
 }
