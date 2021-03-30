@@ -1,7 +1,5 @@
 package com.pyn.algorithm.array
 
-import java.util.*
-
 /**
  * 链表 简单算法
  */
@@ -110,6 +108,32 @@ object ListSolutionManager {
      */
     fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
 
+        if (l1 == null) {
+            return l2
+        }
+
+        if (l2 == null) {
+            return l1
+        }
+
+        var temp: ListNode = ListNode(0)
+        var l1 = l1
+        var l2 = l2
+        var result = temp
+
+        while (l1 != null && l2 != null) {
+
+            if (l1.`val` <= l2.`val`) {
+                temp.next = l1
+                l1 = l1.next
+            }else{
+                temp.next = l2
+                l2 = l2.next
+            }
+            temp = temp.next!!
+        }
+        temp.next = l1 ?: l2
+        return result.next
     }
 
     /**
