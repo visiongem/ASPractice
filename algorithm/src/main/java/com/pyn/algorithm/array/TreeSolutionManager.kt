@@ -58,7 +58,44 @@ object TreeSolutionManager {
      * 所有左子树和右子树自身必须也是二叉搜索树。
      */
     fun isValidBST(root: TreeNode?): Boolean {
+        var root = root
+        /*return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE)*/
+        // 中序遍历
+        var stack: Deque<TreeNode> = LinkedList<TreeNode>()
+        var inorder: Double = -Double.MAX_VALUE
 
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root)
+                root = root.left
+            }
+            root = stack.pop()
+            if (root.`val`<=inorder){
+                return false
+            }
+            inorder = root.`val`.toDouble()
+            root = root.right
+        }
+        return true
+    }
+
+    /**
+     * 递归的方式
+     */
+    fun isValidBST(root: TreeNode?, minVal: Long, maxVal: Long): Boolean {
+        if (root == null) {
+            return true
+        }
+
+        if (root.`val` >= maxVal || root.`val` <= minVal) {
+            return false
+        }
+
+        return isValidBST(root.left, minVal, root.`val`.toLong()) && isValidBST(
+            root.right,
+            root.`val`.toLong(),
+            maxVal
+        )
     }
 
     class TreeNode(var `val`: Int) {
