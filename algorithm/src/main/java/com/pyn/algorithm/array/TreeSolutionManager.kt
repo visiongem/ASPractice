@@ -1,6 +1,7 @@
 package com.pyn.algorithm.array
 
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * 树
@@ -70,7 +71,7 @@ object TreeSolutionManager {
                 root = root.left
             }
             root = stack.pop()
-            if (root.`val`<=inorder){
+            if (root.`val` <= inorder) {
                 return false
             }
             inorder = root.`val`.toDouble()
@@ -103,7 +104,7 @@ object TreeSolutionManager {
      * 给定一个二叉树，检查它是否是镜像对称的。
      */
     fun isSymmetric(root: TreeNode?): Boolean {
-        if(root == null){
+        if (root == null) {
             return true
         }
         return isSymmetric(root.left, root.right)
@@ -112,11 +113,11 @@ object TreeSolutionManager {
     /**
      * 递归法
      */
-    fun isSymmetric(left: TreeNode?, right:TreeNode?):Boolean{
-        if(left==null && right==null){
+    fun isSymmetric(left: TreeNode?, right: TreeNode?): Boolean {
+        if (left == null && right == null) {
             return true
         }
-        if (left==null||right==null||left.`val`!=right.`val`){
+        if (left == null || right == null || left.`val` != right.`val`) {
             return false
         }
         return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left)
@@ -127,7 +128,32 @@ object TreeSolutionManager {
      * 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
      */
     fun levelOrder(root: TreeNode?): List<List<Int>> {
-
+        // 边界判断
+        if (root == null) {
+            return ArrayList()
+        }
+        // 队列
+        var queue: Queue<TreeNode> = LinkedList()
+        var res: MutableList<MutableList<Int>> = ArrayList()
+        queue.add(root)
+        while (!queue.isEmpty()) {
+            var levelNum = queue.size
+            var subList: MutableList<Int> = ArrayList<Int>()
+            for (i in 0 until levelNum) {
+                // 出队
+                var node: TreeNode = queue.poll()
+                subList.add(node.`val`)
+                if (node.left != null) {
+                    queue.add(node.left)
+                }
+                if (node.right != null) {
+                    queue.add(node.right)
+                }
+            }
+            // 把每层的结点存储在res中
+            res.add(subList)
+        }
+        return res
     }
 
     /**
