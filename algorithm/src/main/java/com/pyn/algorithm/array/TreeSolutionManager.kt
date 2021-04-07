@@ -98,6 +98,47 @@ object TreeSolutionManager {
         )
     }
 
+    /**
+     * 对称二叉树
+     * 给定一个二叉树，检查它是否是镜像对称的。
+     */
+    fun isSymmetric(root: TreeNode?): Boolean {
+        if(root == null){
+            return true
+        }
+        return isSymmetric(root.left, root.right)
+    }
+
+    /**
+     * 递归法
+     */
+    fun isSymmetric(left: TreeNode?, right:TreeNode?):Boolean{
+        if(left==null && right==null){
+            return true
+        }
+        if (left==null||right==null||left.`val`!=right.`val`){
+            return false
+        }
+        return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left)
+    }
+
+    /**
+     * 二叉树的层序遍历
+     * 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
+     */
+    fun levelOrder(root: TreeNode?): List<List<Int>> {
+
+    }
+
+    /**
+     * 将有序数组转换为二叉搜索树
+     * 给你一个整数数组 nums ，其中元素已经按 升序 排列，请你将其转换为一棵 高度平衡 二叉搜索树。
+     * 高度平衡 二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。
+     */
+    fun sortedArrayToBST(nums: IntArray): TreeNode? {
+
+    }
+
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
         var right: TreeNode? = null
