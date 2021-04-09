@@ -1,5 +1,7 @@
 package com.pyn.algorithm.array
 
+import kotlin.math.max
+
 /**
  * 动态规划
  */
@@ -12,7 +14,17 @@ object DynamicSolutionManager {
      * 注意：给定 n 是一个正整数。
      */
     fun climbStairs(n: Int): Int {
-        return 0
+
+        var p = 0
+        var q = 0
+        var r = 1
+
+        for (i in 1..n) {
+            p = q
+            q = r
+            r = p + q
+        }
+        return r
     }
 
     /**
@@ -22,7 +34,23 @@ object DynamicSolutionManager {
      * 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
      */
     fun maxProfit(prices: IntArray): Int {
-        return 0
+
+        var result = 0
+        var fir = 0
+        for(i in prices.indices){
+            if (i == 0){
+                fir = prices[0]
+                continue
+            }
+            var num = prices[i] - fir
+            if (num > 0){
+                result = Math.max(result, num)
+            }else{
+                fir = prices[i]
+            }
+        }
+
+        return result
     }
 
     /**
