@@ -35,15 +35,15 @@ object DynamicSolutionManager {
 
         var result = 0
         var fir = 0
-        for(i in prices.indices){
-            if (i == 0){
+        for (i in prices.indices) {
+            if (i == 0) {
                 fir = prices[0]
                 continue
             }
             var num = prices[i] - fir
-            if (num > 0){
+            if (num > 0) {
                 result = Math.max(result, num)
-            }else{
+            } else {
                 fir = prices[i]
             }
         }
@@ -56,7 +56,15 @@ object DynamicSolutionManager {
      * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
      */
     fun maxSubArray(nums: IntArray): Int {
-        return 0
+
+        var pre = 0
+        var maxAns = nums[0]
+        for (i in nums.indices) {
+            pre = Math.max(pre + nums[i], nums[i])
+            maxAns = Math.max(maxAns, pre)
+        }
+
+        return maxAns
     }
 
     /**
@@ -66,6 +74,24 @@ object DynamicSolutionManager {
      * 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
      */
     fun rob(nums: IntArray): Int {
-        return 0
+
+        if (nums.isEmpty()) {
+            return 0
+        }
+        if (nums.size == 1) {
+            return nums[0]
+        }
+        if (nums.size == 2) {
+            return Math.max(nums[0], nums[1])
+        }
+        var result1 = nums[0]
+        var result2 = Math.max(nums[0], nums[1])
+
+        for (i in 2 until nums.size) {
+            var temp = result2
+            result2 = Math.max(result1 + nums[i], result2)
+            result1 = temp
+        }
+        return result2
     }
 }
