@@ -1,5 +1,7 @@
 package com.pyn.algorithm.array
 
+import kotlin.random.Random
+
 /**
  * 设计问题
  * 这类问题通常要求你实现一个给定的类的接口，并可能涉及使用一种或多种数据结构。 这些问题对于提高数据结构是很好的练习。
@@ -15,14 +17,39 @@ package com.pyn.algorithm.array
  */
 class Solution(nums: IntArray) {
 
+    private var array: IntArray
+    private var original: IntArray
+
+    init {
+        array = nums
+        original = nums.clone()
+    }
+
+    private var rand: Random = Random
+
+    fun randRange(min:Int, max:Int):Int{
+        return rand.nextInt(max-min)+min
+    }
+
+    fun swapAt(i:Int,j:Int){
+        var temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
+
     /** Resets the array to its original configuration and return it. */
     fun reset(): IntArray {
-        return IntArray(1)
+        array = original
+        original = original.clone()
+        return original
     }
 
     /** Returns a random shuffling of the array. */
     fun shuffle(): IntArray {
-        return IntArray(1)
+        for (i in array.indices){
+            swapAt(i, randRange(i, array.size))
+        }
+        return array
     }
 
     /**
