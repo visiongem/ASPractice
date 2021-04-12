@@ -32,5 +32,8 @@ class ArrayActivity : AppCompatActivity() {
 
         var atoiNum = "    -42"
         Log.d("Atoi", " = ${StringSolutionManager.myAtoi(atoiNum)}")
+
+        var primes = 10
+        Log.d("countPrimes", "${MathSolutionManger.countPrimes(primes)}")
     }
 }

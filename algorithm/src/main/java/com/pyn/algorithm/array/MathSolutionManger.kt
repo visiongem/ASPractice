@@ -29,4 +29,46 @@ object MathSolutionManger {
         }
         return result
     }
+
+    /**
+     * 计数质数
+     * 统计所有小于非负整数 n 的质数的数量。
+     */
+    fun countPrimes(n: Int): Int {
+
+        var count = 0
+
+        for (i in 2 until n) {
+            if (isPrime(i)){
+                count++
+            }
+        }
+        return count
+    }
+
+    fun isPrime(x: Int): Boolean {
+        for (i in 2 until x) {
+            if (x % i == 0) {
+                return false
+            }
+        }
+        return true
+    }
+
+    /**
+     * 3的幂
+     * 给定一个整数，写一个函数来判断它是否是 3 的幂次方。如果是，返回 true ；否则，返回 false 。
+     * 整数 n 是 3 的幂次方需满足：存在整数 x 使得 n == 3x
+     */
+    fun isPowerOfThree(n: Int): Boolean {
+        return true
+    }
+
+    /**
+     * 罗马数字转整数
+     */
+    fun romanToInt(s: String): Int {
+        return 0
+    }
+
 }
