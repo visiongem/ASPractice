@@ -1,5 +1,6 @@
 package com.pyn.algorithm.array
 
+import java.util.*
 import kotlin.random.Random
 
 /**
@@ -27,11 +28,11 @@ class Solution(nums: IntArray) {
 
     private var rand: Random = Random
 
-    fun randRange(min:Int, max:Int):Int{
-        return rand.nextInt(max-min)+min
+    fun randRange(min: Int, max: Int): Int {
+        return rand.nextInt(max - min) + min
     }
 
-    fun swapAt(i:Int,j:Int){
+    fun swapAt(i: Int, j: Int) {
         var temp = array[i]
         array[i] = array[j]
         array[j] = temp
@@ -46,7 +47,7 @@ class Solution(nums: IntArray) {
 
     /** Returns a random shuffling of the array. */
     fun shuffle(): IntArray {
-        for (i in array.indices){
+        for (i in array.indices) {
             swapAt(i, randRange(i, array.size))
         }
         return array
@@ -71,19 +72,30 @@ class Solution(nums: IntArray) {
  */
 class MinStack() {
 
+    var xStack: Deque<Int> = LinkedList()
+    var minStack: Deque<Int> = LinkedList()
+
+    init {
+        minStack.push(Int.MAX_VALUE)
+    }
+
     /** initialize your data structure here. */
     fun push(x: Int) {
+        xStack.push(x)
+        minStack.push(Math.min(minStack.peek(), x))
     }
 
     fun pop() {
+        xStack.pop()
+        minStack.pop()
     }
 
     fun top(): Int {
-        return 0
+        return xStack.peek()
     }
 
     fun getMin(): Int {
-        return 0
+        return minStack.peek()
     }
 
 }
