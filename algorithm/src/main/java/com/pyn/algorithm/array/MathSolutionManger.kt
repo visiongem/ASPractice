@@ -35,20 +35,19 @@ object MathSolutionManger {
      * 统计所有小于非负整数 n 的质数的数量。
      */
     fun countPrimes(n: Int): Int {
-
         var count = 0
-
         for (i in 2 until n) {
-            if (isPrime(i)){
+            if (isPrime(i)) {
                 count++
             }
         }
         return count
     }
 
-    fun isPrime(x: Int): Boolean {
-        for (i in 2 until x) {
-            if (x % i == 0) {
+    fun isPrime(num: Int): Boolean {
+        var max = Math.sqrt(num.toDouble()).toInt()
+        for (i in 2..max) {
+            if (num % i == 0) {
                 return false
             }
         }
@@ -58,17 +57,51 @@ object MathSolutionManger {
     /**
      * 3的幂
      * 给定一个整数，写一个函数来判断它是否是 3 的幂次方。如果是，返回 true ；否则，返回 false 。
-     * 整数 n 是 3 的幂次方需满足：存在整数 x 使得 n == 3x
+     * 整数 n 是 3 的幂次方需满足：存在整数 x 使得 n == 3^x
      */
     fun isPowerOfThree(n: Int): Boolean {
-        return true
+        var n = n
+        if (n > 1) {
+            while (n % 3 == 0) {
+                n = n / 3
+            }
+        }
+        return n == 1
+        // return n > 0 && (n == 1 || (n % 3 == 0 && isPowerOfThree(n / 3)));
+        //return ((Math.log10(n.toDouble()) / Math.log10(3.toDouble())) % 1).toInt() == 0;
     }
 
     /**
      * 罗马数字转整数
      */
     fun romanToInt(s: String): Int {
-        return 0
+        var map: MutableMap<String, Int> = HashMap()
+        map["I"] = 1
+        map["IV"] = 4
+        map["V"] = 5
+        map["IX"] = 9
+        map["X"] = 10
+        map["XL"] = 40
+        map["L"] = 50
+        map["XC"] = 90
+        map["C"] = 100
+        map["CD"] = 400
+        map["D"] = 500
+        map["CM"] = 900
+        map["M"] = 1000
+
+        var result = 0
+        var i = 0
+        while (i < s.length) {
+            if ((i + 1) < s.length && map.containsKey(s.substring(i, i + 2))) {
+                result += map.get(s.substring(i, i + 2))!!
+                i += 2
+            } else {
+                result += map.get(s.substring(i, i + 1))!!
+                i += 1
+            }
+        }
+        return result
     }
 
 }

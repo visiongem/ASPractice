@@ -57,7 +57,7 @@ object StringSolutionManager {
     fun firstUniqChar(s: String): Int {
 
         // 用哈希表解决，两边循环
-        var result: MutableMap<String, Int> = HashMap<String, Int>()
+        var result: MutableMap<String, Int> = HashMap()
         for (index in s.indices) {
 
             if (result.containsKey(s[index].toString())) {
