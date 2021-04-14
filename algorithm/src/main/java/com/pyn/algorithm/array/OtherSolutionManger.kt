@@ -3,7 +3,7 @@ package com.pyn.algorithm.array
 /**
  * 其他
  */
-class OtherSolutionManger {
+object OtherSolutionManger {
 
     /**
      * 位1的个数
@@ -11,7 +11,14 @@ class OtherSolutionManger {
      */
     // you need treat n as an unsigned value
     fun hammingWeight(n: Int): Int {
-        return 0
+        var result = 0
+        var nStr = Integer.toBinaryString(n)
+        for (element in nStr) {
+            if (element == '1'){
+                result++
+            }
+        }
+        return result
     }
 
     /**
