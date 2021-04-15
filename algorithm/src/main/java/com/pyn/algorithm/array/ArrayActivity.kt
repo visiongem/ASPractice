@@ -42,7 +42,11 @@ class ArrayActivity : AppCompatActivity() {
         var primes = 10
         Log.d("countPrimes", "${MathSolutionManger.countPrimes(primes)}")
 
-        var charArray :CharArray = charArrayOf('1','0','1','0')
+        var charArray: CharArray = charArrayOf('1', '0', '1', '0')
         Log.d("hammingWeight", "${OtherSolutionManger.hammingWeight(primes)}")
+
+        Log.d("hammingDistance", "${OtherSolutionManger.hammingDistance(1, 4)}")
+
+        Log.d("missingNumber", "${OtherSolutionManger.missingNumber(IntArray(1))}")
     }
 }
