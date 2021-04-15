@@ -1,7 +1,5 @@
 package com.pyn.algorithm.array
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.util.*
 
 /**
