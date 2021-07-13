@@ -48,5 +48,7 @@ class ArrayActivity : AppCompatActivity() {
         Log.d("hammingDistance", "${OtherSolutionManger.hammingDistance(1, 4)}")
 
         Log.d("missingNumber", "${OtherSolutionManger.missingNumber(IntArray(1))}")
+
+        Log.d("threeSum", "${IntermediateAlgorithmManager.threeSum(intArrayOf(-2, 0, 1, 1, 2))}")
     }
 }
